@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu'
 import { Button } from './ui/button'
 import { useTheme } from 'next-themes'
+import { SidebarTrigger } from './ui/sidebar'
 
 const Navbar = () => {
 
@@ -16,7 +17,7 @@ const Navbar = () => {
   return(
     <nav className='p-4 flex items-center justify-between'>
       {/* collapse button */}
-      Collapse
+      <SidebarTrigger/>
     <div className='flex items-center gap-4'>
         <Link href='/'>
             Workstation
