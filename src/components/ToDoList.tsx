@@ -1,14 +1,47 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import { ScrollArea } from './ui/scroll-area'
 import { Separator } from './ui/separator'
 import { Card } from './ui/card'
 import { Checkbox } from './ui/checkbox'
 import { Label } from './ui/label'
+import { Calendar } from './ui/calendar'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+import { Button } from './ui/button'
+import { CalendarIcon } from 'lucide-react'
+import { format } from 'date-fns'
 
 const ToDoList = () => {
+
+const [date, setDate] = React.useState<Date | undefined>(undefined)
+  const [timeZone, setTimeZone] = React.useState<string | undefined>(undefined)
+ const [open , setOpen] = useState(false)
+  React.useEffect(() => {
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+  }, [])
+
   return (
     <div>
-      Calender
+    <h1 className='text-lg font-medium mb-6'>Todo List</h1>
+      {/* Calender */}
+      <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button className='w-full'>
+            <CalendarIcon/>
+            {date ? format(date, "PPP") : <span> Pick a date </span> }
+        </Button>
+      </PopoverTrigger>
+        <PopoverContent className='w-auto p-0'><Calendar
+      mode="single"
+      selected={date}
+      onSelect={(date)=>{setDate(date); setOpen(false)}}
+      timeZone={timeZone}
+      className=''
+    />
+    </PopoverContent>
+    </Popover>
+      
       <Separator/>
 
       <ScrollArea className='max-h-100 mt-4 overflow-y-auto'>
