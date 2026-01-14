@@ -1,5 +1,7 @@
+import AppLineChart from '@/components/AppLineChart'
 import CardList from '@/components/CardList'
 import EditUser from '@/components/EditUser'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
@@ -149,11 +151,25 @@ const SingleUserPage = () => {
     <div className='w-full xl:w-2/3 space-y-6'>
         {/* RIGHT */}
 
-        <div className='bg-primary-foreground p-4 rounded-lg'>
-            User Card
+        <div className='bg-primary-foreground p-4 rounded-lg space-y-4'>
+            <div className='flex items-center gap-4'>
+                <Avatar className='size-12'>
+                    <AvatarImage src="https://picsum.photos/200/200?random=7"/>
+                    <AvatarFallback>VL</AvatarFallback>
+                </Avatar>
+
+                <h1 className='text-xl font-semibold'>
+                    Vivelune
+                </h1>
+            </div>
+            <p className='text-sm text-muted-foreground'>
+                Vivelune is a passionate software developer with over 5 years of experience in full-stack web development. He enjoys building user-friendly applications, exploring new technologies like React and Node.js, and contributing to open-source projects in his free time. When not coding, John loves hiking, reading sci-fi novels, and experimenting with home brewing.
+            </p>
+
         </div>
-        <div className='bg-primary-foreground p-4 rounded-lg'>
-            Chart
+        <div className='bg-primary-foreground p-4 rounded-lg flex flex-col gap-4'>
+            <h1 className='text-xl font-semibold'>User Activity</h1>
+            <AppLineChart/>
         </div>
     </div>
 </div>

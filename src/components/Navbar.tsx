@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
   return(
-    <nav className='p-4 flex items-center justify-between'>
+    <nav className='p-4 flex items-center justify-between top-0 bg-background sticky z-10'>
       {/* collapse button */}
       <SidebarTrigger/>
     <div className='flex items-center gap-4'>
